@@ -2,13 +2,7 @@ import "babel-polyfill"
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux';
-
-import Counter from './components/Counter'
-import ArticleList from './components/ArticleList';
-import store from './state/configureStore';
-
-import { actions } from './state/counter/index';
+import App from './views/App';
 
 
 // helper function to just dispatch actions with no payload
@@ -16,13 +10,7 @@ import { actions } from './state/counter/index';
 
 function render() {
   ReactDOM.render(
-
-    <Provider store={store}>
-      <div>
-        <Counter/>
-        <ArticleList />
-      </div>
-    </Provider>,
+    <App/>,
     document.getElementById('root')
   )
 }

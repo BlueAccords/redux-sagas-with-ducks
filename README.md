@@ -1,16 +1,11 @@
-# redux-saga-beginner-tutorial
-Companion Repo for [Redux/Redux-saga beginner tutorial](https://github.com/redux-saga/redux-saga/blob/master/docs/introduction/BeginnerTutorial.md)
-
+# redux-saga + ducks
+cloned from  https://github.com/redux-saga/redux-saga-beginner-tutorial.git  
+Just a basic app using redux sagas using redux saga ducks folder structure.
 # Instructions
 
-Setup
+Set up
 
 ```
-// clone the repo
-git clone https://github.com/redux-saga/redux-saga-beginner-tutorial.git
-
-cd redux-saga-beginner-tutorial
-
 npm install
 ```
 

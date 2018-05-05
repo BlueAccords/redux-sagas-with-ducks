@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actions } from './../state/article'
+import { actions } from './../../state/article'
 
 class ArticleList extends React.Component {
   constructor(props) {
