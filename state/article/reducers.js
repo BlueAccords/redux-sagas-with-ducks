@@ -9,7 +9,7 @@ export default function(
     case types.RECEIVE_ARTICLES:
       return {
         ...state,
-        articles: action.payload
+        articles: action.payload.data
       }
     default:
       return state;

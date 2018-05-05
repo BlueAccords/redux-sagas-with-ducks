@@ -3,32 +3,47 @@ import test from 'tape';
 import { put, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import axios from 'axios';
-import { getAllArticles } from './state/article/sagas';
-import { incrementAsync } from './sagas';
+import * as articleSagas from './state/article/sagas';
+import { actions as articleActions } from './state/article';
+import * as counterSagas from './state/counter/sagas';
+import { actions as counterActions } from './state/counter';
+import api from './services/api';
+
+const mockArticles = {
+  data: {
+    id: 1,
+    title: 'test-name',
+    body: 'test-body'
+  }
+}
 
 test('getAllArticles Saga test', (assert) => {
-  const gen = getAllArticles();
+  const gen = articleSagas.getAllArticles();
   const articleURL = 'https://5aeb604f046d7b0014fb6e2d.mockapi.io/api/articles'
 
   assert.deepEqual(
     gen.next().value,
-    call(axios.get, articleURL),
+    call(api.fetchArticles , articleURL),
     'getAllArticles Saga should call function axios.get'
   );
 
   assert.deepEqual(
     gen.next().value,
-    call(
-      (response)=> {console.log(response)},
-      'response?'
-    )
+    put(articleActions.receiveArticles()),
+    'getAllArticles Saga should dispatch RECEIVE_ARTICLES action'
   );
+
+  assert.deepEqual(
+    gen.next(),
+    { done: true, value: undefined },
+    'getAllArticles saga must finish and be done'
+  )
 
   assert.end();
 })
 
 test('incrementAsync Saga test', (assert) => {
-  const gen = incrementAsync();
+  const gen = counterSagas.incrementAsync();
 
   assert.deepEqual(
     gen.next().value,
@@ -38,10 +53,7 @@ test('incrementAsync Saga test', (assert) => {
 
   assert.deepEqual(
     gen.next().value,
-    put({
-      type: 'INCREMENT',
-      payload: {}
-      }),
+    put(counterActions.incrementCounter()),
     'incrementAsync Saga should dispatch INCREMENT action'
   )
 
