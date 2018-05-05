@@ -21,7 +21,7 @@ export function* watchGetAllArticlesAsync() {
   yield takeEvery(types.REQUEST_ARTICLES, getAllArticles);
 }
 
-// export watcher sagas in one variable
+// export only watcher sagas in one variable
 export const sagas = [
   watchGetAllArticlesAsync
 ];

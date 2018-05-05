@@ -3,7 +3,8 @@ import test from 'tape';
 import { put, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import axios from 'axios';
-import { incrementAsync, getAllArticles } from './sagas';
+import { getAllArticles } from './state/article/sagas';
+import { incrementAsync } from './sagas';
 
 test('getAllArticles Saga test', (assert) => {
   const gen = getAllArticles();

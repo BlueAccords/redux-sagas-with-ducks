@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import actions from './../actions/index';
+import { actions } from './../state/article'
 
 class ArticleList extends React.Component {
   constructor(props) {
@@ -22,8 +22,7 @@ class ArticleList extends React.Component {
           <p>{article.body}</p>
         </li>)
       })
-      console.log(this.props.data);
-      console.log(results);
+
       return results;
     } else {
       return <h2>Loading...</h2>

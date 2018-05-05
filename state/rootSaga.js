@@ -1,9 +1,11 @@
-import { sagas as articleSagas } from './article/index';
+import { sagas as articleSagas } from './article';
+import { sagas as counterSagas } from './counter';
 import { takeEvery, takeLatest, fork, all } from 'redux-saga/effects';
 
 
 const allSagas = [
-  ...articleSagas
+  ...articleSagas,
+  ...counterSagas
 ]
 
 
