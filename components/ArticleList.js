@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import actions from './../actions';
+import actions from './../actions/index';
 
 class ArticleList extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class ArticleList extends React.Component {
   }
   
   componentDidMount() {
-    this.props.requestArticles();
+    this.props.actions.requestArticles();
   }
 
   displayArticles() {
@@ -48,9 +48,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    requestArticles: actions.requestArticles
-  }, dispatch)
+  return {
+      actions: bindActionCreators({
+        requestArticles: actions.requestArticles
+      }, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList)

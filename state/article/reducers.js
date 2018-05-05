@@ -1,4 +1,4 @@
-import actionTypes from './../actions/action-types';
+import * as types from './types';
 
 export default function(
   state = {
@@ -6,7 +6,7 @@ export default function(
   },
   action) {
   switch(action.type) {
-    case actionTypes.RECEIVE_ARTICLES:
+    case types.RECEIVE_ARTICLES:
       return {
         ...state,
         articles: action.payload

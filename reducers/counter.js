@@ -1,4 +1,4 @@
-import actionTypes from './../action-types'
+import actionTypes from './../actions/action-types'
 
 export default function counter(state = 0, action) {
   switch (action.type) {

@@ -1,7 +1,7 @@
 import { delay } from 'redux-saga'
 import { put, takeEvery, all, call } from 'redux-saga/effects'
-import actions from './actions';
-import actionTypes from './action-types';
+import actions from './actions/index';
+import actionTypes from './actions/action-types';
 import api from './api';
 
 // worker saga: perform async task
@@ -30,7 +30,7 @@ export function* getAllArticles() {
 
 }
 
-// test articles
+// Watches for specific action, and then executes the related saga
 export function* watchGetAllArticlesAsync() {
   yield takeEvery(actionTypes.REQUEST_ARTICLES, getAllArticles);
 }
